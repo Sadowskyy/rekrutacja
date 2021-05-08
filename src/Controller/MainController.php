@@ -11,7 +11,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class MainController extends AbstractController
 {
-    const URL = 'https://reqres.in/api/users';
+    const URL = 'https://reqres.in/api/users/';
 
     public function __construct(private HttpClientInterface $httpClient)
     {
@@ -33,7 +33,7 @@ class MainController extends AbstractController
     }
 
     #[Route('/users/{id}', name: 'get_user')]
-    public function get($id): Response
+    public function findUser(int $id): Response
     {
         $response = $this->httpClient->request(
             'GET',
