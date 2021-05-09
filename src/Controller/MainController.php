@@ -17,21 +17,6 @@ class MainController extends AbstractController
     {
     }
 
-    #[Route('/users', name: 'create_user')]
-    public function create(Request $request): Response
-    {
-        $response = $this->httpClient->request(
-            'POST',
-            self::URL,
-            ['body' => [
-                'name' => $request->request->get('name'),
-                'job' => $request->request->get('job')
-            ]]
-        )->getContent();
-
-        return new Response($response);
-    }
-
     #[Route('/users/{id}', name: 'get_user')]
     public function findUser(int $id): Response
     {
@@ -42,6 +27,5 @@ class MainController extends AbstractController
 
         return new Response($response);
     }
-
 
 }
